@@ -94,7 +94,7 @@ export default {
         let user = response.data.user.original;
         let token = response.data.access_token;
         console.log(user);
-        dispatch("loadPlayedVideos", user.user.id);
+        dispatch("loadPlayedVideos", user.id);
 
         commit("SET_TOKEN", token);
         commit("SET_CURRENT_USER", user);
