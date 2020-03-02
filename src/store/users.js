@@ -93,12 +93,12 @@ export default {
 
           commit('SET_TOKEN', token);
           commit('SET_CURRENT_USER', user);
-          dispatch('getAuthenticatedUser');
+          //dispatch('getAuthenticatedUser');
 
           return user;
         }
         catch(error) {
-            //return {error: "Email/password combination was incorrect. Please try again."}
+            return {error: "Email/password combination was incorrect. Please try again."}
         }
     },
     async registerUser({commit, dispatch}, registrationInfo) {
