@@ -47,14 +47,14 @@ export default {
             let response = await Api().post('/auth/me');
             let user = response.data.user;
             let userId = user.id;
-            
+
             commit('SET_CURRENT_USER', user);
             dispatch('loadPlayedVideos', userId);
           } catch (error) {
             //if not logged in at the backend, clear token an user data in localstorage
-            commit('LOGOUT_USER');  
+            commit('LOGOUT_USER');
           }
-        } 
+        }
     },
     async loadPlayedVideos({commit}, userId) {
         //Get videos played by user
@@ -71,14 +71,14 @@ export default {
           commit('MARK_VIDEO_PLAYED', videoId);
           Api().post('/video_played', {
             videoId: videoId
-          }); 
-        } 
+          });
+        }
     },
     async logoutUser({commit}) {
         try {
           let response = await Api().post('/auth/logout')
         } catch (error) {
-          return error  
+          return error
         }
         commit('LOGOUT_USER');
     },
@@ -87,14 +87,14 @@ export default {
           let response = await Api().post('/auth/login', loginInfo);
           let user = response.data.user.original;
           let token = response.data.access_token;
-          console.log(user.user)
+          console.log(user)
           dispatch('loadPlayedVideos', user.user.id);
-          
-          
+
+
           commit('SET_TOKEN', token);
           commit('SET_CURRENT_USER', user);
           dispatch('getAuthenticatedUser');
-          
+
           return user;
         } catch(error) {
             return {error: "Email/password combination was incorrect. Please try again."}
@@ -119,6 +119,6 @@ export default {
         isPlayed: (state, getters) => videoId => {
             return getters.playedVideos.includes(videoId)
         },
-        
+
     }
-} 
+}
