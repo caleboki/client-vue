@@ -52,6 +52,8 @@ export default {
         try {
           let response = await Api().post("/auth/me");
           let user = response.data.user;
+          console.log('this is user from getauthenticated method ')
+          console.log(user)
           let userId = user.id;
 
           commit("SET_CURRENT_USER", user);
@@ -93,7 +95,7 @@ export default {
         let response = await Api().post("/auth/login", loginInfo);
         let user = response.data.user.original;
         let token = response.data.access_token;
-        console.log(user);
+
         dispatch("loadPlayedVideos", user.id);
 
         commit("SET_TOKEN", token);
