@@ -1,11 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import snackbarModule from './snackbar';
-import tagsModule from './tags';
-import videosModule from './videos';
-import usersModule from './users';
+import Vue from "vue";
+import Vuex from "vuex";
+import snackbarModule from "./snackbar";
+import tagsModule from "./tags";
+import videosModule from "./videos";
+import usersModule from "./users";
 
-Vue.use(Vuex)
+Vue.config.devtools = true;
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
@@ -13,7 +14,5 @@ export default new Vuex.Store({
     tags: tagsModule,
     videos: videosModule,
     users: usersModule
-  },
- 
-  
-})
+  }
+});
