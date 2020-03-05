@@ -95,7 +95,7 @@ export default {
         let response = await Api().post("/auth/login", loginInfo);
         let user = response.data.user.original;
         let token = response.data.access_token;
-
+        debugger
         dispatch("loadPlayedVideos", user.id);
 
         commit("SET_TOKEN", token);
