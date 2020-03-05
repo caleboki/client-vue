@@ -62,7 +62,7 @@ export default {
         } catch (error) {
           console.log(error)
           //if not logged in at the backend, clear token an user data in localstorage
-          commit("LOGOUT_USER");
+          //commit("LOGOUT_USER");
         }
       }
     },
