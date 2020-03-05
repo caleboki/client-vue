@@ -60,6 +60,7 @@ export default {
           commit("SET_CURRENT_USER", user);
           dispatch("loadPlayedVideos", userId);
         } catch (error) {
+          console.log(error)
           //if not logged in at the backend, clear token an user data in localstorage
           commit("LOGOUT_USER");
         }
